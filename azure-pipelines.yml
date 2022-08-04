@@ -16,4 +16,12 @@ steps:
 - script: |
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'MSDN Platforms(c551d83d-898f-4b11-bf52-24f64a47bcac)'
+    appType: 'webAppLinux'
+    WebAppName: 'phpecho'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    AppSettings: '-port:8080'
   displayName: 'Run a multi-line script'
